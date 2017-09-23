@@ -5,6 +5,7 @@
  */
 package com.portafolio.service;
 
+import com.portafolio.controller.UsuarioDao;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -22,5 +23,16 @@ public class WSGestionarUsuario {
     @WebMethod(operationName = "hello")
     public String hello(@WebParam(name = "name") String txt) {
         return "Hello " + txt + " !";
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "ingresarUsuario")
+    public boolean ingresarUsuario(@WebParam(name = "nombreUsuario") String nombreUsuario,@WebParam(name = "claveUsuario") String claveUsuario) {
+        boolean agregado = false;
+        UsuarioDao usuariox = new UsuarioDao();
+        agregado = usuariox.registrarUsuario(nombreUsuario, claveUsuario);
+        return agregado;
     }
 }
