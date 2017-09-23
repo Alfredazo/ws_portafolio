@@ -22,20 +22,21 @@ public class UsuarioDao {
     public boolean registrarUsuario(String nombreUsuario, String claveUsuario) {
 
         boolean agregado = false;
-        String sql = "exec PRACTICA1.ALGO(?,?)";
+
+        String sql = "CALL PRACTICA1.ALGO(?,?)";
         try {
-            Connection accesoDB = conexion.getConnection();
+            
+            Connection accesoDB = conexion.getConexion();
             CallableStatement cs = accesoDB.prepareCall(sql);
             cs.setString(1, nombreUsuario);
-            cs.setString(2, claveUsuario);           
+            cs.setString(2, claveUsuario);
 
             int numFilas = cs.executeUpdate();
             if (numFilas > 0) {
                 agregado = true;
             } else {
                 agregado = false;
-            }
-
+            }            
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -50,7 +51,7 @@ public class UsuarioDao {
 
         String sql = "Select nombreUsuario, password from usuario Where nombreUsuario= ?";
         try {
-            Connection accesoDB = conexion.getConnection();
+            Connection accesoDB = conexion.getConexion();
             PreparedStatement ps = accesoDB.prepareStatement(sql);
             ps.setString(1, nombreUsuario);
             ResultSet rs = ps.executeQuery();
