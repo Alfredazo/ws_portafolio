@@ -12,11 +12,11 @@ import oracle.jdbc.driver.OracleDriver;
 public class Conexion {
 
     //Usuario de la base de datos
-    private final String USUARIO = "hr";
+    private final String USUARIO = "alfredo";
     //Contraseña del usuario de la base de datos
-    private final String PASS = "hr";
+    private final String PASS = "root";
     //SID de la base de datos, este lo registramos en la instalacion
-    private final String SID = "xe";
+    private final String SID = "orcl";
     //Host donde se encuentra la base de datos, para nuesto caso como es local
     //se indica que esta en localhost
     private final String HOST = "localhost";
