@@ -35,4 +35,13 @@ public class WSGestionarUsuario {
         agregado = usuariox.registrarUsuario(nombreUsuario, claveUsuario);
         return agregado;
     }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "eliminarUsuario")
+    public boolean eliminarUsuario(@WebParam(name = "usuario") long usuario, @WebParam(name = "parameter1") String parameter1) {
+        //TODO write your implementation code here:
+        return false;
+    }
 }

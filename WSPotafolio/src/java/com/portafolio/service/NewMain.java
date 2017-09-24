@@ -22,8 +22,8 @@ public class NewMain {
               
         UsuarioDao prueba = new UsuarioDao();
         
-        System.out.println(prueba.registrarUsuario("pe1", "juegos"));
-        
+//        System.out.println(prueba.registrarUsuario("pe1", "juegos"));
+        System.out.println(prueba.listarUsuarios());
         
         
     }

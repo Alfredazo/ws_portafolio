@@ -5,12 +5,15 @@
  */
 package com.portafolio.controller;
 
+import com.portafolio.modelos.Algo;
 import com.portafolio.modelos.Conexion;
+import com.portafolio.modelos.Usuario;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class UsuarioDao {
 
@@ -23,7 +26,7 @@ public class UsuarioDao {
     public boolean registrarUsuario(String nombreUsuario, String claveUsuario) {
 
         boolean agregado = false;
-        String sql = "CALL PRACTICA1.ALGO(?,?)";
+        String sql = "CALL paqueteTrabajador.ALGO(?,?)";
         try {
             
             Connection accesoDB = conexion.getConexion();
@@ -45,6 +48,34 @@ public class UsuarioDao {
 
     }
 
+    public ArrayList<Algo> listarUsuarios() {
+
+        ArrayList listaUsuarios = new ArrayList();
+
+        String sql = "Select * From Algo";
+        try {
+            Connection accesoDB = conexion.getConexion();
+            PreparedStatement ps = accesoDB.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            System.out.println(rs);
+            while (rs.next()) {
+                String digito1 = rs.getString(1);
+                String digito2 = rs.getString(2);              
+                
+                Algo usuax = new Algo(digito1,digito2);
+                listaUsuarios.add(usuax);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return listaUsuarios;
+    }
+    
+    
+    
+    
     public boolean validarClaveUsuario(String nombreUsuario, String claveUsuario) {
 
         boolean validado = false;
