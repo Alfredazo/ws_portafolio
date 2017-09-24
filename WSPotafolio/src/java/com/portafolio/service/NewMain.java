@@ -19,12 +19,10 @@ public class NewMain {
      */
     public static void main(String[] args) {
         
-        Conexion conex = new Conexion();
-        System.out.println(conex.getConexion());
-        
+              
         UsuarioDao prueba = new UsuarioDao();
         
-        prueba.registrarUsuario("asdasdasd", "juegos");
+        System.out.println(prueba.registrarUsuario("pe1", "juegos"));
         
         
         
