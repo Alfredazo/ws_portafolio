@@ -81,7 +81,7 @@ public class WSGestionarUsuario {
         return listaUsuarios;
     }
 
-    @WebMethod(operationName = "listarUsuariosPorNivel")
+    @WebMethod(operationName = "listarUsuariosPorRangoDePuntos")
     public ArrayList<Usuario> listarUsuariosPorRangoDePuntos(@WebParam(name = "rangoInicial") int rangoInicial, @WebParam(name = "rangoFinal") int rangoFinal) {
         ArrayList listaUsuarios = new ArrayList();
         UsuarioDao usuariox = new UsuarioDao();
@@ -102,6 +102,7 @@ public class WSGestionarUsuario {
         ArrayList listaUsuarios = new ArrayList();
         PersonaUsuarioDao personaUsuario = new PersonaUsuarioDao();
         listaUsuarios = personaUsuario.listarInformacionCompletaTodosLosUsuarios();
+        
         return listaUsuarios;
     }
 

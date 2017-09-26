@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+ <definitions 
+ xmlns="http://schemas.xmlsoap.org/wsdl/" 
+ xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+ xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="WSGestionarUsuario" targetNamespace="http://service.portafolio.com/" xmlns:tns="http://service.portafolio.com/" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" xmlns:sc="http://schemas.sun.com/2006/03/wss/server" xmlns:wspp="http://java.sun.com/xml/ns/wsit/policy" xmlns:wsoma="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization" 
+ >
+    <message name="ingresarUsuario"/>
+    <message name="ingresarUsuarioResponse"/>
+    <message name="modificarUsuario"/>
+    <message name="modificarUsuarioResponse"/>
+    <message name="eliminarUsuario"/>
+    <message name="eliminarUsuarioResponse"/>
+    <message name="comprobarNombreUsuario"/>
+    <message name="comprobarNombreUsuarioResponse"/>
+    <message name="comprobarsiExisteEmail"/>
+    <message name="comprobarsiExisteEmailResponse"/>
+    <message name="listarUsuarios"/>
+    <message name="listarUsuariosResponse"/>
+    <message name="listarUsuariosPorNivel"/>
+    <message name="listarUsuariosPorNivelResponse"/>
+    <message name="listarUsuariosPorRangoDePuntos"/>
+    <message name="listarUsuariosPorRangoDePuntosResponse"/>
+    <message name="validarUsuarioPorNombreUsuarioUCorreo"/>
+    <message name="validarUsuarioPorNombreUsuarioUCorreoResponse"/>
+    <message name="listarInformacionCompletaTodosLosUsuarios"/>
+    <message name="listarInformacionCompletaTodosLosUsuariosResponse"/>
+    <message name="listarInformacionCompletaDelUsuariosPorUsuarioClave"/>
+    <message name="listarInformacionCompletaDelUsuariosPorUsuarioClaveResponse"/>
+    <message name="listarInformacionCompletaDelUsuariosPorCorreoClave"/>
+    <message name="listarInformacionCompletaDelUsuariosPorCorreoClaveResponse"/>
+    <portType name="WSGestionarUsuario">
+        <operation name="ingresarUsuario">
+            <input message="tns:ingresarUsuario"/>
+            <output message="tns:ingresarUsuarioResponse"/>
+        </operation>
+        <operation name="modificarUsuario">
+            <input message="tns:modificarUsuario"/>
+            <output message="tns:modificarUsuarioResponse"/>
+        </operation>
+        <operation name="eliminarUsuario">
+            <input message="tns:eliminarUsuario"/>
+            <output message="tns:eliminarUsuarioResponse"/>
+        </operation>
+        <operation name="comprobarNombreUsuario">
+            <input message="tns:comprobarNombreUsuario"/>
+            <output message="tns:comprobarNombreUsuarioResponse"/>
+        </operation>
+        <operation name="comprobarsiExisteEmail">
+            <input message="tns:comprobarsiExisteEmail"/>
+            <output message="tns:comprobarsiExisteEmailResponse"/>
+        </operation>
+        <operation name="listarUsuarios">
+            <input message="tns:listarUsuarios"/>
+            <output message="tns:listarUsuariosResponse"/>
+        </operation>
+        <operation name="listarUsuariosPorNivel">
+            <input message="tns:listarUsuariosPorNivel"/>
+            <output message="tns:listarUsuariosPorNivelResponse"/>
+        </operation>
+        <operation name="listarUsuariosPorRangoDePuntos">
+            <input message="tns:listarUsuariosPorRangoDePuntos"/>
+            <output message="tns:listarUsuariosPorRangoDePuntosResponse"/>
+        </operation>
+        <operation name="validarUsuarioPorNombreUsuarioUCorreo">
+            <input message="tns:validarUsuarioPorNombreUsuarioUCorreo"/>
+            <output message="tns:validarUsuarioPorNombreUsuarioUCorreoResponse"/>
+        </operation>
+        <operation name="listarInformacionCompletaTodosLosUsuarios">
+            <input message="tns:listarInformacionCompletaTodosLosUsuarios"/>
+            <output message="tns:listarInformacionCompletaTodosLosUsuariosResponse"/>
+        </operation>
+        <operation name="listarInformacionCompletaDelUsuariosPorUsuarioClave">
+            <input message="tns:listarInformacionCompletaDelUsuariosPorUsuarioClave"/>
+            <output message="tns:listarInformacionCompletaDelUsuariosPorUsuarioClaveResponse"/>
+        </operation>
+        <operation name="listarInformacionCompletaDelUsuariosPorCorreoClave">
+            <input message="tns:listarInformacionCompletaDelUsuariosPorCorreoClave"/>
+            <output message="tns:listarInformacionCompletaDelUsuariosPorCorreoClaveResponse"/>
+        </operation>
+    </portType>
+    <binding name="WSGestionarUsuarioPortBinding" type="tns:WSGestionarUsuario">
+        <operation name="ingresarUsuario">
+            <input></input>
+            <output></output>
+        </operation>
+        <operation name="modificarUsuario">
+            <input></input>
+            <output></output>
+        </operation>
+        <operation name="eliminarUsuario">
+            <input></input>
+            <output></output>
+        </operation>
+        <operation name="comprobarNombreUsuario">
+            <input></input>
+            <output></output>
+        </operation>
+        <operation name="comprobarsiExisteEmail">
+            <input></input>
+            <output></output>
+        </operation>
+        <operation name="listarUsuarios">
+            <input></input>
+            <output></output>
+        </operation>
+        <operation name="listarUsuariosPorNivel">
+            <input></input>
+            <output></output>
+        </operation>
+        <operation name="listarUsuariosPorRangoDePuntos">
+            <input></input>
+            <output></output>
+        </operation>
+        <operation name="validarUsuarioPorNombreUsuarioUCorreo">
+            <input></input>
+            <output></output>
+        </operation>
+        <operation name="listarInformacionCompletaTodosLosUsuarios">
+            <input></input>
+            <output></output>
+        </operation>
+        <operation name="listarInformacionCompletaDelUsuariosPorUsuarioClave">
+            <input></input>
+            <output></output>
+        </operation>
+        <operation name="listarInformacionCompletaDelUsuariosPorCorreoClave">
+            <input></input>
+            <output></output>
+        </operation>
+    </binding>
+    <service name="WSGestionarUsuario">
+        <port name="WSGestionarUsuarioPort" binding="tns:WSGestionarUsuarioPortBinding"/>
+    </service>
+</definitions>
