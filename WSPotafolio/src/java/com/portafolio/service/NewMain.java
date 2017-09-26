@@ -54,12 +54,23 @@ public class NewMain {
 //          System.out.println("METODO: " + usuario.comprobarNombreUsuario("TesteoUser2"));
 //          System.out.println("Eliminado: "+usuario.eliminarUsuario("TesteoUser2"));
            //Testing listar por filtros(Niveles)
-           System.out.println("Listar por Nivel: "+ usuario.listarUsuariosPorNivel(2));
-           //Testing listar por Puntos(Rangos)
-           int rangoInicial = 100;
-           int rangoFinal = 1600;
-           System.out.println("Listar Por niveles Rango 1:" + rangoInicial + " Rango 2:"+ rangoFinal);
-           System.out.println(usuario.listarUsuariosPorRangoDePuntos(rangoInicial, rangoFinal));
+//           System.out.println("Listar por Nivel: "+ usuario.listarUsuariosPorNivel(2));
+//           //Testing listar por Puntos(Rangos)
+//           int rangoInicial = 100;
+//           int rangoFinal = 1600;
+//           System.out.println("Listar Por niveles Rango 1:" + rangoInicial + " Rango 2:"+ rangoFinal);
+//           System.out.println(usuario.listarUsuariosPorRangoDePuntos(rangoInicial, rangoFinal));
+            //Testing Validar Autentificación Usuario por correo 
+            String variable = "jaredaguilera@gmail.com";
+            String variable2 = "jar.aguilera";
+            String variable3 = "contr";
+            System.out.println("Autentificación: "+usuario.validarUsuarioPorNombreUsuarioUCorreo(variable, variable3));
+            System.out.println("Autentificación: "+usuario.validarUsuarioPorNombreUsuarioUCorreo(variable2, variable3));
+            System.out.println("Autentificación: "+usuario.validarUsuarioPorNombreUsuarioUCorreo(variable, "asdasdasdasd"));
+            System.out.println("Autentificación: "+usuario.validarUsuarioPorNombreUsuarioUCorreo(variable2, "asdasdasdasd"));
+            
+            
+                    
 
     }
 

@@ -202,7 +202,7 @@ public class UsuarioDao {
 
         return listaUsuarios;
     }
-    
+
     public ArrayList<Usuario> listarUsuariosPorNivel(int nivelUsuarioEntrada) {
 
         ArrayList listaUsuarios = new ArrayList();
@@ -233,8 +233,8 @@ public class UsuarioDao {
 
         return listaUsuarios;
     }
-    
-      public ArrayList<Usuario> listarUsuariosPorRangoDePuntos(int rangoInicial, int rangoFinal) {
+
+    public ArrayList<Usuario> listarUsuariosPorRangoDePuntos(int rangoInicial, int rangoFinal) {
 
         ArrayList listaUsuarios = new ArrayList();
 
@@ -265,33 +265,72 @@ public class UsuarioDao {
 
         return listaUsuarios;
     }
+
+    public boolean validarUsuarioPorNombreUsuarioUCorreo(String nombreUsuarioUCorreo, String claveUsuario) {
+        boolean validado = false;
+        int resultado = nombreUsuarioUCorreo.indexOf("@");
+        if (resultado != -1) {
+            /*Valido Metodo de Correo*/
+            validado = this.validarUsuarioPorCorreo(nombreUsuarioUCorreo, claveUsuario);
+        } else {
+            /*Valido Metodo Usuario*/
+            validado = this.validarUsuarioPorNombre(nombreUsuarioUCorreo, claveUsuario);
+        }
+        
+        return validado;
+    }
+
+    public boolean validarUsuarioPorNombre(String nombreUsuario, String claveUsuario) {
+        boolean validado = false;
+
+        String sql = "select usuario, contraseña  from usuario where usuario = ?";
+        try {
+            Connection accesoDB = conexion.getConexion();
+            PreparedStatement ps = accesoDB.prepareStatement(sql);
+            ps.setString(1, nombreUsuario);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                if (rs.getString(1).equals(nombreUsuario) && rs.getString(2).equals(claveUsuario)) {
+                    validado = true;
+                } else {
+                    validado = false;
+                }
+            }
+
+        } catch (Exception e) {
+            System.out.println("algo" + e.getMessage());
+        }
+        return validado;
+    }
+    
+    public boolean validarUsuarioPorCorreo(String correo, String claveUsuario) {
+        boolean validado = false;
+
+        String sql = "select email, contraseña  from usuario where email = ?";
+        try {
+            Connection accesoDB = conexion.getConexion();
+            PreparedStatement ps = accesoDB.prepareStatement(sql);
+            ps.setString(1, correo);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                if (rs.getString(1).equals(correo) && rs.getString(2).equals(claveUsuario)) {
+                    validado = true;
+                } else {
+                    validado = false;
+                }
+            }
+
+        } catch (Exception e) {
+            System.out.println("algo" + e.getMessage());
+        }
+        return validado;
+    }
     
     
-// /*Modificar este metodo*/ 
-//    public boolean validarClaveUsuario(String nombreUsuario, String claveUsuario) {
-//
-//        boolean validado = false;
-//
-//        String sql = "Select nombreUsuario, password from usuario Where nombreUsuario= ?";
-//        try {
-//            Connection accesoDB = conexion.getConexion();
-//            PreparedStatement ps = accesoDB.prepareStatement(sql);
-//            ps.setString(1, nombreUsuario);
-//            ResultSet rs = ps.executeQuery();
-//
-//            if (rs.next()) {
-//                if (rs.getString(1).equals(nombreUsuario) && rs.getString(2).equals(claveUsuario)) {
-//                    validado = true;
-//                } else {
-//                    validado = false;
-//                }
-//            }
-//
-//        } catch (Exception e) {
-//            System.out.println("algo" + e.getMessage());
-//        }
-//        return validado;
-//    }
 
     public int retornarUltimoIdPersonaAgregadaUsuario() {
         int idUsuario = 0;
