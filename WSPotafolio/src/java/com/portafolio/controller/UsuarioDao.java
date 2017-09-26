@@ -100,21 +100,34 @@ public class UsuarioDao {
         return valida;
     }
 
-    public ArrayList<Algo> listarUsuarios() {
+       private int idUsuario;
+    private String usuario;
+    private String clave;
+    private String email;
+    private int puntosAcumulados;
+    private int nivelUsuario;
+    private String urlImagen;
+    
+    public ArrayList<Usuario> listarUsuarios() {
 
         ArrayList listaUsuarios = new ArrayList();
 
-        String sql = "Select * From Algo";
+        String sql = "Select * From Usuario";
         try {
             Connection accesoDB = conexion.getConexion();
             PreparedStatement ps = accesoDB.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            System.out.println(rs);
+        
             while (rs.next()) {
-                String digito1 = rs.getString(1);
-                String digito2 = rs.getString(2);
+                int idUsuario = rs.getInt(1);
+                String usuario = rs.getString(2);
+                String clave = rs.getString(3);
+                String email = rs.getString(4);
+                int puntosAcumulados = rs.getInt(5);
+                int nivelUsuario = rs.getInt(6);
+                String urlImagen = rs.getString(7);
 
-                Algo usuax = new Algo(digito1, digito2);
+                Usuario usuax = new Usuario(idUsuario, usuario, clave, email, puntosAcumulados, nivelUsuario, urlImagen);
                 listaUsuarios.add(usuax);
             }
 
