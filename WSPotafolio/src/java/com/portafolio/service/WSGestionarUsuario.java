@@ -5,7 +5,9 @@
  */
 package com.portafolio.service;
 
+import com.portafolio.controller.PersonaUsuarioDao;
 import com.portafolio.controller.UsuarioDao;
+import com.portafolio.modelos.PersonaUsuario;
 import com.portafolio.modelos.Usuario;
 import java.util.ArrayList;
 import javax.jws.WebService;
@@ -95,5 +97,28 @@ public class WSGestionarUsuario {
         return validado;
     }
 
-    
+    @WebMethod(operationName = "listarInformacionCompletaTodosLosUsuarios")
+    public ArrayList<PersonaUsuario> listarInformacionCompletaTodosLosUsuarios() {
+        ArrayList listaUsuarios = new ArrayList();
+        PersonaUsuarioDao personaUsuario = new PersonaUsuarioDao();
+        listaUsuarios = personaUsuario.listarInformacionCompletaTodosLosUsuarios();
+        return listaUsuarios;
+    }
+
+    @WebMethod(operationName = "listarInformacionCompletaDelUsuariosPorUsuarioClave")
+    public ArrayList<PersonaUsuario> listarInformacionCompletaDelUsuariosPorUsuarioClave(@WebParam(name = "nombreUsuario") String nombreUsuario, @WebParam(name = "claveUsuario") String claveUsuario) {
+        ArrayList listaUsuarios = new ArrayList();
+        PersonaUsuarioDao personaUsuario = new PersonaUsuarioDao();
+        listaUsuarios = personaUsuario.listarInformacionCompletaDelUsuariosPorUsuarioClave(nombreUsuario, claveUsuario);
+        return listaUsuarios;
+    }
+
+    @WebMethod(operationName = "listarInformacionCompletaDelUsuariosPorCorreoClave")
+    public ArrayList<PersonaUsuario> listarInformacionCompletaDelUsuariosPorCorreoClave(@WebParam(name = "correoUsuario") String correoUsuario, @WebParam(name = "claveUsuario") String claveUsuario) {
+        ArrayList listaUsuarios = new ArrayList();
+        PersonaUsuarioDao personaUsuario = new PersonaUsuarioDao();
+        listaUsuarios = personaUsuario.listarInformacionCompletaDelUsuariosPorCorreoClave(correoUsuario, claveUsuario);
+        return listaUsuarios;
+    }
+
 }
