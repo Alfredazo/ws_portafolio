@@ -100,13 +100,7 @@ public class UsuarioDao {
         return valida;
     }
 
-       private int idUsuario;
-    private String usuario;
-    private String clave;
-    private String email;
-    private int puntosAcumulados;
-    private int nivelUsuario;
-    private String urlImagen;
+
     
     public ArrayList<Usuario> listarUsuarios() {
 
