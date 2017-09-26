@@ -6,6 +6,8 @@
 package com.portafolio.service;
 
 import com.portafolio.controller.UsuarioDao;
+import com.portafolio.modelos.Usuario;
+import java.util.ArrayList;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -17,31 +19,81 @@ import javax.jws.WebParam;
 @WebService(serviceName = "WSGestionarUsuario")
 public class WSGestionarUsuario {
 
-    /**
-     * This is a sample web service operation
-     */
-    @WebMethod(operationName = "hello")
-    public String hello(@WebParam(name = "name") String txt) {
-        return "Hello " + txt + " !";
-    }
-
-    /**
-     * Web service operation
-     */
     @WebMethod(operationName = "ingresarUsuario")
-    public boolean ingresarUsuario(@WebParam(name = "nombreUsuario") String nombreUsuario,@WebParam(name = "claveUsuario") String claveUsuario) {
+    public boolean ingresarUsuario(@WebParam(name = "nombreUsuario") String nombreUsuario, @WebParam(name = "claveUsuario") String claveUsuario,
+            @WebParam(name = "emailUsuario") String emailUsuario, @WebParam(name = "puntosAcumulados") int puntosAcumulados,
+            @WebParam(name = "nivelUsuario") int nivelUsuario, @WebParam(name = "urlImagenUsuario") String urlImagenUsuario) {
         boolean agregado = false;
         UsuarioDao usuariox = new UsuarioDao();
-//        agregado = usuariox.registrarUsuario(nombreUsuario, claveUsuario);
+        agregado = usuariox.registrarUsuario(nombreUsuario, claveUsuario, emailUsuario, puntosAcumulados, nivelUsuario, urlImagenUsuario);
         return agregado;
     }
 
-    /**
-     * Web service operation
-     */
-    @WebMethod(operationName = "eliminarUsuario")
-    public boolean eliminarUsuario(@WebParam(name = "usuario") long usuario, @WebParam(name = "parameter1") String parameter1) {
-        //TODO write your implementation code here:
-        return false;
+    @WebMethod(operationName = "modificarUsuario")
+    public boolean modificarUsuario(@WebParam(name = "nombreUsuario") String nombreUsuario, @WebParam(name = "claveUsuario") String claveUsuario,
+            @WebParam(name = "emailUsuario") String emailUsuario, @WebParam(name = "puntosAcumulados") int puntosAcumulados,
+            @WebParam(name = "nivelUsuario") int nivelUsuario, @WebParam(name = "urlImagenUsuario") String urlImagenUsuario) {
+        boolean modificado = false;
+        UsuarioDao usuariox = new UsuarioDao();
+        modificado = usuariox.modificarUsuario(nombreUsuario, claveUsuario, emailUsuario, puntosAcumulados, nivelUsuario, urlImagenUsuario);
+        return modificado;
     }
+
+    @WebMethod(operationName = "eliminarUsuario")
+    public boolean eliminarUsuario(@WebParam(name = "nombreUsuario") String nombreUsuario) {
+        boolean eliminado = false;
+        UsuarioDao usuariox = new UsuarioDao();
+        eliminado = usuariox.eliminarUsuario(nombreUsuario);
+        return eliminado;
+    }
+
+    @WebMethod(operationName = "comprobarNombreUsuario")
+    public boolean comprobarNombreUsuario(@WebParam(name = "nombreUsuario") String nombreUsuario) {
+        boolean existe = false;
+        UsuarioDao usuariox = new UsuarioDao();
+        existe = usuariox.comprobarNombreUsuario(nombreUsuario);
+        return existe;
+    }
+
+    @WebMethod(operationName = "comprobarsiExisteEmail")
+    public boolean comprobarsiExisteEmail(@WebParam(name = "emailUsuario") String emailUsuario) {
+        boolean existe = false;
+        UsuarioDao usuariox = new UsuarioDao();
+        existe = usuariox.comprobarsiExisteEmail(emailUsuario);
+        return existe;
+    }
+
+    @WebMethod(operationName = "listarUsuarios")
+    public ArrayList<Usuario> listarUsuarios() {
+        ArrayList listaUsuarios = new ArrayList();
+        UsuarioDao usuariox = new UsuarioDao();
+        listaUsuarios = usuariox.listarUsuarios();
+        return listaUsuarios;
+    }
+
+    @WebMethod(operationName = "listarUsuariosPorNivel")
+    public ArrayList<Usuario> listarUsuariosPorNivel(@WebParam(name = "nivelUsuario") int nivelUsuario) {
+        ArrayList listaUsuarios = new ArrayList();
+        UsuarioDao usuariox = new UsuarioDao();
+        listaUsuarios = usuariox.listarUsuariosPorNivel(nivelUsuario);
+        return listaUsuarios;
+    }
+
+    @WebMethod(operationName = "listarUsuariosPorNivel")
+    public ArrayList<Usuario> listarUsuariosPorRangoDePuntos(@WebParam(name = "rangoInicial") int rangoInicial, @WebParam(name = "rangoFinal") int rangoFinal) {
+        ArrayList listaUsuarios = new ArrayList();
+        UsuarioDao usuariox = new UsuarioDao();
+        listaUsuarios = usuariox.listarUsuariosPorRangoDePuntos(rangoInicial, rangoFinal);
+        return listaUsuarios;
+    }
+
+    @WebMethod(operationName = "validarUsuarioPorNombreUsuarioUCorreo")
+    public boolean validarUsuarioPorNombreUsuarioUCorreo(@WebParam(name = "usuarioUCorreo") String usuarioUCorreo, @WebParam(name = "claveUsuario") String claveUsuario) {
+        boolean validado = false;
+        UsuarioDao usuariox = new UsuarioDao();
+        validado = usuariox.validarUsuarioPorNombreUsuarioUCorreo(usuarioUCorreo, claveUsuario);
+        return validado;
+    }
+
+    
 }

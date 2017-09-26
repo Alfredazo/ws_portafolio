@@ -6,6 +6,7 @@
 package com.portafolio.service;
 
 import com.portafolio.controller.PersonaDao;
+import com.portafolio.controller.PersonaUsuarioDao;
 import com.portafolio.controller.UsuarioDao;
 import com.portafolio.modelos.Conexion;
 import java.sql.Date;
@@ -68,8 +69,11 @@ public class NewMain {
 //            System.out.println("Autentificación: "+usuario.validarUsuarioPorNombreUsuarioUCorreo(variable2, variable3));
 //            System.out.println("Autentificación: "+usuario.validarUsuarioPorNombreUsuarioUCorreo(variable, "asdasdasdasd"));
 //            System.out.println("Autentificación: "+usuario.validarUsuarioPorNombreUsuarioUCorreo(variable2, "asdasdasdasd"));
-            
-            
+             //Testing PersonaUsuarioDao Rescate de información
+//             PersonaUsuarioDao personaUsuario = new PersonaUsuarioDao();
+//             System.out.println("Listado Completo de Todas las Personas "+personaUsuario.listarInformacionCompletaTodosLosUsuarios());
+//             System.out.println("Listado Por Filtro:(Rescato de Datos Despues de Autentificar");
+//             System.out.println("Listado: "+ personaUsuario.listarInformacionCompletaDelUsuariosPorUsuarioClave("jar.aguilera", "contr"));
                     
 
     }
