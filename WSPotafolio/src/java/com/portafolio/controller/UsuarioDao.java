@@ -5,7 +5,6 @@
  */
 package com.portafolio.controller;
 
-import com.portafolio.modelos.Algo;
 import com.portafolio.modelos.Conexion;
 import com.portafolio.modelos.Usuario;
 import java.sql.CallableStatement;
