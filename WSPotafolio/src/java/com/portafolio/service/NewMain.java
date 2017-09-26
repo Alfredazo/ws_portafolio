@@ -37,8 +37,8 @@ public class NewMain {
 //        String fecha = "17/06/2017";
 //        java.util.Date fechaParseada = formato.parse(fecha);
 //        java.sql.Date fechaLista = new java.sql.Date(fechaParseada.getTime());
-//        int idUsuario = usuario.retornarUltimoIdPersonaAgregadaUsuario();
-//        System.out.println("Usuario: "+usuario.registrarUsuario("TesteoUser2", "123TESTING", "testing@testing.cl", 0, 0, "N/A"));
+////        int idUsuario = usuario.retornarUltimoIdPersonaAgregadaUsuario();
+//        System.out.println("Usuario: "+usuario.registrarUsuario("OTROusuario", "123TESTING", "testing@testing.cl", 0, 0, "N/A"));
 //        System.out.println("Ultimo Registro BD: " + usuario.retornarUltimoIdPersonaAgregadaUsuario());
 ////
 ////        System.out.println("PERSONA: "+persona.registrarPersona("123-4", "Prueba2", "Prueba", "ApellidoPrueba", "Apellido2Prueba", fechaLista, "Testing", 1234567, 16) );
@@ -48,9 +48,18 @@ public class NewMain {
 //        //Testing para modificar
 //        System.out.println("Modificado: "+usuario.modificarUsuario("pedritoaa","12345678", "pedro@aaka.com",23, 1, "N/A"));
 //        System.out.println("Modificado: "+usuario.modificarUsuario("pedritoaazzzzzz","12345678", "pedro@aaka.com",23, 1, "N/A"));
-
-        System.out.println("Lista: "+usuario.listarUsuarios());
-
+//        //TEsting para rescatar la lista de usuarios
+//        System.out.println("Lista: "+usuario.listarUsuarios());
+//          //Testing para eliminar usuario
+//          System.out.println("METODO: " + usuario.comprobarNombreUsuario("TesteoUser2"));
+//          System.out.println("Eliminado: "+usuario.eliminarUsuario("TesteoUser2"));
+           //Testing listar por filtros(Niveles)
+           System.out.println("Listar por Nivel: "+ usuario.listarUsuariosPorNivel(2));
+           //Testing listar por Puntos(Rangos)
+           int rangoInicial = 100;
+           int rangoFinal = 1600;
+           System.out.println("Listar Por niveles Rango 1:" + rangoInicial + " Rango 2:"+ rangoFinal);
+           System.out.println(usuario.listarUsuariosPorRangoDePuntos(rangoInicial, rangoFinal));
 
     }
 
