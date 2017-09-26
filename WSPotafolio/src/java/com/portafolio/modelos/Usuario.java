@@ -11,47 +11,50 @@ package com.portafolio.modelos;
  */
 public class Usuario {
     
-    private int id;
-    private String nombre;
-    private String password;
+    private int idUsuario;
+    private String usuario;
+    private String clave;
     private String email;
     private int puntosAcumulados;
     private int nivelUsuario;
-    private int id1;
-    
-    public Usuario() {        
-    }
+    private String urlImagen;
 
-    public Usuario(String nombre, String password, String email, int puntosAcumulados, int nivelUsuario) {
-        this.nombre = nombre;
-        this.password = password;
+    public Usuario() {
+    }
+  
+    
+    public Usuario(int idUsuario, String usuario, String clave, String email, int puntosAcumulados, int nivelUsuario, String urlImagen) {
+        this.idUsuario = idUsuario;
+        this.usuario = usuario;
+        this.clave = clave;
         this.email = email;
         this.puntosAcumulados = puntosAcumulados;
         this.nivelUsuario = nivelUsuario;
+        this.urlImagen = urlImagen;
     }
 
-    public int getId() {
-        return id;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getUsuario() {
+        return usuario;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
-    public String getPassword() {
-        return password;
+    public String getClave() {
+        return clave;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setClave(String clave) {
+        this.clave = clave;
     }
 
     public String getEmail() {
@@ -78,15 +81,18 @@ public class Usuario {
         this.nivelUsuario = nivelUsuario;
     }
 
-    public int getId1() {
-        return id1;
+    public String getUrlImagen() {
+        return urlImagen;
     }
 
-    public void setId1(int id1) {
-        this.id1 = id1;
+    public void setUrlImagen(String urlImagen) {
+        this.urlImagen = urlImagen;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "idUsuario=" + idUsuario + ", usuario=" + usuario + ", clave=" + clave + ", email=" + email + ", puntosAcumulados=" + puntosAcumulados + ", nivelUsuario=" + nivelUsuario + ", urlImagen=" + urlImagen + '}';
+    }
+
     
 }

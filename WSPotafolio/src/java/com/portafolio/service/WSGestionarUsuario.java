@@ -32,7 +32,7 @@ public class WSGestionarUsuario {
     public boolean ingresarUsuario(@WebParam(name = "nombreUsuario") String nombreUsuario,@WebParam(name = "claveUsuario") String claveUsuario) {
         boolean agregado = false;
         UsuarioDao usuariox = new UsuarioDao();
-        agregado = usuariox.registrarUsuario(nombreUsuario, claveUsuario);
+//        agregado = usuariox.registrarUsuario(nombreUsuario, claveUsuario);
         return agregado;
     }
 
