@@ -42,10 +42,10 @@ public class NewMain {
 //        System.out.println("Usuario: "+usuario.registrarUsuario("OTROusuario", "123TESTING", "testing@testing.cl", 0, 0, "N/A"));
 //        System.out.println("Ultimo Registro BD: " + usuario.retornarUltimoIdPersonaAgregadaUsuario());
 ////
-        System.out.println("PERSONA: "+persona.registrarPersona("123-4", "Prueba2", "Prueba", "ApellidoPrueba", "Apellido2Prueba", "17/06/2017", "Testing", 1234567, 16) );
-
-//        //Testing para rescatar el ultimo usuario agregado a la BD
-//        System.out.println("Ultimo Registro BD: " + usuario.retornarUltimoIdPersonaAgregadaUsuario());
+//        System.out.println("PERSONA: "+persona.registrarPersona("123-4", "Prueba2", "Prueba", "ApellidoPrueba", "Apellido2Prueba", "17/06/2017", "Testing", 1234567, 16) );
+//
+////        //Testing para rescatar el ultimo usuario agregado a la BD
+////        System.out.println("Ultimo Registro BD: " + usuario.retornarUltimoIdPersonaAgregadaUsuario());
 //        //Testing para modificar
 //        System.out.println("Modificado: "+usuario.modificarUsuario("pedritoaa","12345678", "pedro@aaka.com",23, 1, "N/A"));
 //        System.out.println("Modificado: "+usuario.modificarUsuario("pedritoaazzzzzz","12345678", "pedro@aaka.com",23, 1, "N/A"));

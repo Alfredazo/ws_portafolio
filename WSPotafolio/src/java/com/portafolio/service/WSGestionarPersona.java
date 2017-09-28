@@ -7,6 +7,7 @@ package com.portafolio.service;
 
 import com.portafolio.controller.PersonaDao;
 import java.sql.Date;
+import java.text.ParseException;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -31,7 +32,7 @@ public class WSGestionarPersona {
             @WebParam(name = "segundoNombre") String segundoNombre, @WebParam(name = "primerApellido") String primerApellido,
             @WebParam(name = "segundoApellido") String segundoApellido, @WebParam(name = "fechaNacimiento") String fechaNacimiento,
             @WebParam(name = "direccion") String direccion, @WebParam(name = "telefono") int telefono,
-            @WebParam(name = "idUsuario") int idUsuario) {
+            @WebParam(name = "idUsuario") int idUsuario){
         boolean agregado = false;
         PersonaDao persona = new PersonaDao();
         agregado = persona.registrarPersona(rut, primerNombre, segundoNombre, primerApellido, segundoApellido, fechaNacimiento, direccion, telefono, idUsuario);

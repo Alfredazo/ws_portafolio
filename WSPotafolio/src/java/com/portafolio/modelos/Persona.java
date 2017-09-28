@@ -10,7 +10,7 @@ public class Persona {
     private String segundoNombre;
     private String primerApellido;
     private String segundoApellido;
-    private Date fechaNacimiento;
+    private String fechaNacimiento;
     private String direccion;
     private int telefono;
     private int usuarioID;
@@ -18,7 +18,7 @@ public class Persona {
     public Persona() {
     }
 
-    public Persona(String rut, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, Date fechaNacimiento, String direccion, int telefono, int idusuario) {
+    public Persona(String rut, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String fechaNacimiento, String direccion, int telefono, int idusuario) {
         this.rut = rut;
         this.primerNombre = primerNombre;
         this.segundoNombre = segundoNombre;
@@ -70,11 +70,11 @@ public class Persona {
         this.segundoApellido = segundoApellido;
     }
 
-    public Date getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
