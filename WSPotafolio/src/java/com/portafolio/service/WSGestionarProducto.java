@@ -27,7 +27,7 @@ public class WSGestionarProducto {
     }
 
     @WebMethod(operationName = "registrarProducto")
-    public boolean hello(@WebParam(name = "nombre") String nombre, @WebParam(name = "precio") int precio, @WebParam(name = "descripcion") String descripcion,
+    public boolean registrarProducto(@WebParam(name = "nombre") String nombre, @WebParam(name = "precio") int precio, @WebParam(name = "descripcion") String descripcion,
             @WebParam(name = "urlFoto") String urlFoto, @WebParam(name = "activo") String activo, @WebParam(name = "idEmpresa") int idEmpresa,
             @WebParam(name = "tipoProductoID") int tipoProductoID, @WebParam(name = "fechaIngreso") Date fechaIngreso, @WebParam(name = "fechaCaducidad") Date fechaCaducidad) {
         boolean agregado = false;
