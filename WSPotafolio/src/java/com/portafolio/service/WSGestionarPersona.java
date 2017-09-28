@@ -40,7 +40,7 @@ public class WSGestionarPersona {
     }
     
     @WebMethod(operationName = "eliminarPersona")
-    public boolean ingresarPersona(@WebParam(name = "idUsuario") int idUsuario){
+    public boolean eliminarPersona(@WebParam(name = "idUsuario") int idUsuario){
         boolean agregado = false;
         PersonaDao persona = new PersonaDao();
         agregado = persona.eliminarUsuario(idUsuario);
