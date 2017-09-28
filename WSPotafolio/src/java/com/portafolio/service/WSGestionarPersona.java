@@ -38,5 +38,13 @@ public class WSGestionarPersona {
         agregado = persona.registrarPersona(rut, primerNombre, segundoNombre, primerApellido, segundoApellido, fechaNacimiento, direccion, telefono, idUsuario);
         return agregado;
     }
+    
+    @WebMethod(operationName = "eliminarPersona")
+    public boolean ingresarPersona(@WebParam(name = "idUsuario") int idUsuario){
+        boolean agregado = false;
+        PersonaDao persona = new PersonaDao();
+        agregado = persona.eliminarUsuario(idUsuario);
+        return agregado;
+    }
 
 }
