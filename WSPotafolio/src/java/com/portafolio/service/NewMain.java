@@ -74,7 +74,9 @@ public class NewMain {
 //             System.out.println("Listado Completo de Todas las Personas "+personaUsuario.listarInformacionCompletaTodosLosUsuarios());
 //             System.out.println("Listado Por Filtro:(Rescato de Datos Despues de Autentificar");
 //             System.out.println("Listado: "+ personaUsuario.listarInformacionCompletaDelUsuariosPorUsuarioClave("jar.aguilera", "contr"));
-                    
+////           //Testing devolver idUsuario
+//                UsuarioDao user = new UsuarioDao();
+//                System.out.println("Nivel usuario: "+user.devolverNivelUsuario("jaredaguilera@gmail.com"));
 
     }
 

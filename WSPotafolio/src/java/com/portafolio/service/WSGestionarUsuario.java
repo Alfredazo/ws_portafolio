@@ -121,5 +121,21 @@ public class WSGestionarUsuario {
         listaUsuarios = personaUsuario.listarInformacionCompletaDelUsuariosPorCorreoClave(correoUsuario, claveUsuario);
         return listaUsuarios;
     }
+    
+    @WebMethod(operationName = "devolverNivelUsuario")
+    public int devolverNivelUsuario(@WebParam(name = "correoUNombre") String correoUNombre) {
+        int idUsuario = 0;
+        UsuarioDao usuario = new UsuarioDao();
+        idUsuario = usuario.devolverNivelUsuario(correoUNombre);
+        return idUsuario;
+    }
+    
+    @WebMethod(operationName = "retornarUltimoIDUsuario")
+    public int retornarUltimoIDUsuario() {
+        int idUsuario = 0;
+        UsuarioDao usuario = new UsuarioDao();
+        idUsuario = usuario.retornarUltimoIdPersonaAgregadaUsuario();
+        return idUsuario;
+    }
 
 }

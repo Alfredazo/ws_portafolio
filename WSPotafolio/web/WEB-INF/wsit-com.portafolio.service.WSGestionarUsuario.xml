@@ -29,6 +29,10 @@
     <message name="listarInformacionCompletaDelUsuariosPorUsuarioClaveResponse"/>
     <message name="listarInformacionCompletaDelUsuariosPorCorreoClave"/>
     <message name="listarInformacionCompletaDelUsuariosPorCorreoClaveResponse"/>
+    <message name="devolverNivelUsuario"/>
+    <message name="devolverNivelUsuarioResponse"/>
+    <message name="retornarUltimoIDUsuario"/>
+    <message name="retornarUltimoIDUsuarioResponse"/>
     <portType name="WSGestionarUsuario">
         <operation name="ingresarUsuario">
             <input message="tns:ingresarUsuario"/>
@@ -77,6 +81,14 @@
         <operation name="listarInformacionCompletaDelUsuariosPorCorreoClave">
             <input message="tns:listarInformacionCompletaDelUsuariosPorCorreoClave"/>
             <output message="tns:listarInformacionCompletaDelUsuariosPorCorreoClaveResponse"/>
+        </operation>
+        <operation name="devolverNivelUsuario">
+            <input message="tns:devolverNivelUsuario"/>
+            <output message="tns:devolverNivelUsuarioResponse"/>
+        </operation>
+        <operation name="retornarUltimoIDUsuario">
+            <input message="tns:retornarUltimoIDUsuario"/>
+            <output message="tns:retornarUltimoIDUsuarioResponse"/>
         </operation>
     </portType>
     <binding name="WSGestionarUsuarioPortBinding" type="tns:WSGestionarUsuario">
@@ -127,6 +139,14 @@
         <operation name="listarInformacionCompletaDelUsuariosPorCorreoClave">
             <input></input>
             <output></output>
+        </operation>
+        <operation name="devolverNivelUsuario">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="retornarUltimoIDUsuario">
+            <input/>
+            <output/>
         </operation>
     </binding>
     <service name="WSGestionarUsuario">

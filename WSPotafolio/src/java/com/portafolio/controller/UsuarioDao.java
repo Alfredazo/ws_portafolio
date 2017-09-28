@@ -275,7 +275,7 @@ public class UsuarioDao {
             /*Valido Metodo Usuario*/
             validado = this.validarUsuarioPorNombre(nombreUsuarioUCorreo, claveUsuario);
         }
-        
+
         return validado;
     }
 
@@ -303,7 +303,7 @@ public class UsuarioDao {
         }
         return validado;
     }
-    
+
     public boolean validarUsuarioPorCorreo(String correo, String claveUsuario) {
         boolean validado = false;
 
@@ -328,8 +328,6 @@ public class UsuarioDao {
         }
         return validado;
     }
-    
-    
 
     public int retornarUltimoIdPersonaAgregadaUsuario() {
         int idUsuario = 0;
@@ -337,6 +335,33 @@ public class UsuarioDao {
         try {
             Connection accesoDB = conexion.getConexion();
             PreparedStatement ps = accesoDB.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                idUsuario = rs.getInt(1);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return idUsuario;
+    }
+
+    public int devolverNivelUsuario(String nombreUCorreo) {
+        int idUsuario = 0;
+        String sql = "";
+        int resultado = nombreUCorreo.indexOf("@");
+        if (resultado != -1) {
+            /*Valido Metodo de Correo*/
+            sql = "select nivelusuario from usuario where email=?";
+        } else {
+            /*Valido Metodo Usuario*/
+            sql = "select nivelusuario from usuario where usuario =?";
+        }
+
+        try {
+            Connection accesoDB = conexion.getConexion();
+            PreparedStatement ps = accesoDB.prepareStatement(sql);
+            ps.setString(1, nombreUCorreo);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 idUsuario = rs.getInt(1);
