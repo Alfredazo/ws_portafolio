@@ -29,7 +29,7 @@ public class WSGestionarPersona {
     @WebMethod(operationName = "ingresarPersona")
     public boolean ingresarPersona(@WebParam(name = "rut") String rut, @WebParam(name = "primerNombre") String primerNombre,
             @WebParam(name = "segundoNombre") String segundoNombre, @WebParam(name = "primerApellido") String primerApellido,
-            @WebParam(name = "segundoApellido") String segundoApellido, @WebParam(name = "fechaNacimiento") Date fechaNacimiento,
+            @WebParam(name = "segundoApellido") String segundoApellido, @WebParam(name = "fechaNacimiento") String fechaNacimiento,
             @WebParam(name = "direccion") String direccion, @WebParam(name = "telefono") int telefono,
             @WebParam(name = "idUsuario") int idUsuario) {
         boolean agregado = false;
