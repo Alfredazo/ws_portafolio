@@ -32,19 +32,27 @@ public class WSGestionarPersona {
             @WebParam(name = "segundoNombre") String segundoNombre, @WebParam(name = "primerApellido") String primerApellido,
             @WebParam(name = "segundoApellido") String segundoApellido, @WebParam(name = "fechaNacimiento") String fechaNacimiento,
             @WebParam(name = "direccion") String direccion, @WebParam(name = "telefono") int telefono,
-            @WebParam(name = "idUsuario") int idUsuario){
+            @WebParam(name = "idUsuario") int idUsuario) {
         boolean agregado = false;
         PersonaDao persona = new PersonaDao();
         agregado = persona.registrarPersona(rut, primerNombre, segundoNombre, primerApellido, segundoApellido, fechaNacimiento, direccion, telefono, idUsuario);
         return agregado;
     }
-    
+
     @WebMethod(operationName = "eliminarPersona")
-    public boolean eliminarPersona(@WebParam(name = "idUsuario") int idUsuario){
+    public boolean eliminarPersona(@WebParam(name = "idUsuario") int idUsuario) {
         boolean agregado = false;
         PersonaDao persona = new PersonaDao();
         agregado = persona.eliminarUsuario(idUsuario);
         return agregado;
+    }
+
+    @WebMethod(operationName = "comprobarSiExisteRut")
+    public boolean comprobarSiExisteRut(@WebParam(name = "rut") String rut) {
+        boolean existe = false;
+        PersonaDao persona = new PersonaDao();
+        existe = persona.comprobarsiExisteRut(rut);
+        return existe;
     }
 
 }

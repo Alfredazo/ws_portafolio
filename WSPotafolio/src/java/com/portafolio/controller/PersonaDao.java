@@ -29,6 +29,8 @@ public class PersonaDao {
         try {
             Connection accesoDB = conexion.getConexion();
             CallableStatement cs = accesoDB.prepareCall(sql);
+            rut = rut.toUpperCase();
+            rut = rut.replace(".", "");            
             cs.setString(1, rut);
             cs.setString(2, primerNombre);
             cs.setString(3, segundoNombre);
@@ -72,7 +74,7 @@ public class PersonaDao {
         return valida;
     }
     
-     /*Metodo auxiliar que verifica si realmente se modifico*/
+    /*Metodo auxiliar que verifica si realmente se modifico*/
     public boolean comprobarNombreUsuario(int idUsuario) {
         boolean valida = false;
         String sql = "Select usuario From Usuario Where id=?";
@@ -92,4 +94,25 @@ public class PersonaDao {
         return valida;
     }
 
+    /*Metodo auxiliar que verifica si realmente se modifico*/
+    public boolean comprobarsiExisteRut(String rut) {
+        boolean valida = false;
+        String sql = "Select rut From Persona Where rut=?";
+        try {
+            Connection accesoDB = conexion.getConexion();
+            PreparedStatement ps = accesoDB.prepareStatement(sql);
+            rut = rut.toUpperCase();
+            rut = rut.replace(".", "");            
+            ps.setString(1, rut);
+            ResultSet rs = ps.executeQuery();
+            System.out.println(rs);
+            if (rs.next()) {
+                valida = true;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return valida;
+    }
+    
 }
