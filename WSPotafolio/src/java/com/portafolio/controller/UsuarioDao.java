@@ -372,5 +372,32 @@ public class UsuarioDao {
         }
         return idUsuario;
     }
+    
+      public int devolverIdUsuario(String nombreUCorreo) {
+        int idUsuario = 0;
+        String sql = "";
+        int resultado = nombreUCorreo.indexOf("@");
+        if (resultado != -1) {
+            /*Valido Metodo de Correo*/
+            sql = "select id from usuario where email=?";
+        } else {
+            /*Valido Metodo Usuario*/
+            sql = "select id from usuario where usuario =?";
+        }
+
+        try {
+            Connection accesoDB = conexion.getConexion();
+            PreparedStatement ps = accesoDB.prepareStatement(sql);
+            ps.setString(1, nombreUCorreo);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                idUsuario = rs.getInt(1);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return idUsuario;
+    }
 
 }

@@ -33,6 +33,8 @@
     <message name="devolverNivelUsuarioResponse"/>
     <message name="retornarUltimoIDUsuario"/>
     <message name="retornarUltimoIDUsuarioResponse"/>
+    <message name="devolverIdUsuario"/>
+    <message name="devolverIdUsuarioResponse"/>
     <portType name="WSGestionarUsuario">
         <operation name="ingresarUsuario">
             <input message="tns:ingresarUsuario"/>
@@ -90,6 +92,10 @@
             <input message="tns:retornarUltimoIDUsuario"/>
             <output message="tns:retornarUltimoIDUsuarioResponse"/>
         </operation>
+        <operation name="devolverIdUsuario">
+            <input message="tns:devolverIdUsuario"/>
+            <output message="tns:devolverIdUsuarioResponse"/>
+        </operation>
     </portType>
     <binding name="WSGestionarUsuarioPortBinding" type="tns:WSGestionarUsuario">
         <operation name="ingresarUsuario">
@@ -145,6 +151,10 @@
             <output/>
         </operation>
         <operation name="retornarUltimoIDUsuario">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="devolverIdUsuario">
             <input/>
             <output/>
         </operation>

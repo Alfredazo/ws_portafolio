@@ -130,6 +130,14 @@ public class WSGestionarUsuario {
         return idUsuario;
     }
     
+    @WebMethod(operationName = "devolverIdUsuario")
+    public int devolverIdUsuario(@WebParam(name = "correoUNombre") String correoUNombre) {
+        int idUsuario = 0;
+        UsuarioDao usuario = new UsuarioDao();
+        idUsuario = usuario.devolverIdUsuario(correoUNombre);
+        return idUsuario;
+    }
+    
     @WebMethod(operationName = "retornarUltimoIDUsuario")
     public int retornarUltimoIDUsuario() {
         int idUsuario = 0;
