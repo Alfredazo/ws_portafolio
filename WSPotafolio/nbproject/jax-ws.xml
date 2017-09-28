@@ -7,6 +7,9 @@
     <service name="WSGestionarPersona">
       <implementation-class>com.portafolio.service.WSGestionarPersona</implementation-class>
     </service>
+    <service name="WSGestionarProducto">
+      <implementation-class>com.portafolio.service.WSGestionarProducto</implementation-class>
+    </service>
   </services>
   <clients>
     <client name="WSGestionarUsuario">

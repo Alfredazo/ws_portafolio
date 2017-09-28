@@ -9,17 +9,18 @@ public class Producto {
     private int idProducto;
     private String nombre;
     private int precio;
-    private int descripcionProducto;
+    private String descripcionProducto;
     private String urlFoto;
-    private char activo;
+    private String activo;
     private int idEmpresa;
     private int tipoProductoID;
     private Date fechaIngreso;
+    private Date fechaCaducidad;
 
     public Producto() {
     }
 
-    public Producto(int idProducto, String nombre, int precio, int descripcionProducto, String urlFoto, char activo, int idEmpresa, int tipoProductoID, Date fechaIngreso) {
+    public Producto(int idProducto, String nombre, int precio, String descripcionProducto, String urlFoto, String activo, int idEmpresa, int tipoProductoID, Date fechaIngreso, Date fechaCaducidad) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.precio = precio;
@@ -31,6 +32,15 @@ public class Producto {
         this.fechaIngreso = fechaIngreso;
     }
 
+    public Date getFechaCaducidad() {
+        return fechaCaducidad;
+    }
+
+    public void setFechaCaducidad(Date fechaCaducidad) {
+        this.fechaCaducidad = fechaCaducidad;
+    }
+
+    
     public int getIdProducto() {
         return idProducto;
     }
@@ -55,11 +65,11 @@ public class Producto {
         this.precio = precio;
     }
 
-    public int getDescripcionProducto() {
+    public String getDescripcionProducto() {
         return descripcionProducto;
     }
 
-    public void setDescripcionProducto(int descripcionProducto) {
+    public void setDescripcionProducto(String descripcionProducto) {
         this.descripcionProducto = descripcionProducto;
     }
 
@@ -71,11 +81,11 @@ public class Producto {
         this.urlFoto = urlFoto;
     }
 
-    public char getActivo() {
+    public String getActivo() {
         return activo;
     }
 
-    public void setActivo(char activo) {
+    public void setActivo(String activo) {
         this.activo = activo;
     }
 
