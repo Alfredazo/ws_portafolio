@@ -5,6 +5,7 @@
  */
 package com.portafolio.service;
 
+import com.portafolio.controller.EmpresaDao;
 import com.portafolio.controller.PersonaDao;
 import com.portafolio.controller.PersonaUsuarioDao;
 import com.portafolio.controller.UsuarioDao;
@@ -30,8 +31,8 @@ public class NewMain {
 //        System.out.println(prueba.registrarUsuario("test", "test1"));
 //        System.out.println(prueba.listarUsuarios());
         //Testeo a prueba viendo el valor que retorna
-        PersonaDao persona = new PersonaDao();
-        UsuarioDao usuario = new UsuarioDao();
+//        PersonaDao persona = new PersonaDao();
+//        UsuarioDao usuario = new UsuarioDao();
        
 //        /*Fecha*/
 //        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
@@ -78,6 +79,10 @@ public class NewMain {
 //                UsuarioDao user = new UsuarioDao();
 //                System.out.println("Nivel usuario: "+user.devolverNivelUsuario("jaredaguilera@gmail.com"));
 
+        EmpresaDao empresa = new EmpresaDao();
+        System.out.println("Ultimo ID REGISTRADO:"+ empresa.retornarUltimoIdEmpresa());
+//        System.out.println("Empresa Agregada = "+ empresa.registrarEmpresa("Los Meneces", "Venta Zapatos", 2, "1", "Venta", "131.21-3"));
+        System.out.println("Modificado:"+ empresa.actualizarEmpresa(14,"Los Menxs", "Act Zapatos", 2, "1", "Venta", "131.21-3"));
     }
 
 }
