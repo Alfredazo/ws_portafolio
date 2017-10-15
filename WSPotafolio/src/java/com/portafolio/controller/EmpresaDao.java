@@ -1,11 +1,13 @@
 package com.portafolio.controller;
 
 import com.portafolio.modelos.Conexion;
+import com.portafolio.modelos.Empresa;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class EmpresaDao {
 
@@ -72,6 +74,60 @@ public class EmpresaDao {
         return actualizado;
     }
 
+        public boolean borrarEmpresaPorID(int idEmpresa) {
+        boolean actualizado = false;
+        String sql = "CALL PKG_EMPRESA.pcd_borrar_empresa(?)";
+        try {
+            Connection accesoDB = conexion.getConexion();
+            CallableStatement cs = accesoDB.prepareCall(sql);
+            
+            cs.setInt(1, idEmpresa);           
+            
+            cs.executeUpdate();
+            if (comprobarSiExisteEmpresaID(idEmpresa)) {
+                actualizado = false;
+            } else {
+                actualizado = true;
+            }
+        } catch (SQLException e) {
+            System.out.println("Excep:" + e.getMessage());
+        }
+
+        return actualizado;
+    }
+    
+         public ArrayList<Empresa> listarUsuarios() {
+
+        ArrayList listaEmpresas = new ArrayList();
+
+        String sql = "Select * From Empresa";
+        try {
+            Connection accesoDB = conexion.getConexion();
+            PreparedStatement ps = accesoDB.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int idEmpresa = rs.getInt(1);
+                String nombre = rs.getString(2);
+                String descripcion = rs.getString(3);
+                int tipoEmpresa = rs.getInt(4);
+                String activo = rs.getString(5);
+                String rol = rs.getString(6);
+                String rutEmpresa = rs.getString(7);
+                
+
+                Empresa empresa = new Empresa(idEmpresa, nombre, descripcion, tipoEmpresa, activo, rol, rutEmpresa);
+                listaEmpresas.add(empresa);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return listaEmpresas;
+    }
+        
+        
+    
     public int retornarUltimoIdEmpresa() {
         int idEmpresa = 0;
         String sql = "select id from empresa where rownum <= 1 order by id desc";

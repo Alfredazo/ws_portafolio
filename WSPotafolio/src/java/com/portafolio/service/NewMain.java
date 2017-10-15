@@ -82,7 +82,10 @@ public class NewMain {
         EmpresaDao empresa = new EmpresaDao();
         System.out.println("Ultimo ID REGISTRADO:"+ empresa.retornarUltimoIdEmpresa());
 //        System.out.println("Empresa Agregada = "+ empresa.registrarEmpresa("Los Meneces", "Venta Zapatos", 2, "1", "Venta", "131.21-3"));
-        System.out.println("Modificado:"+ empresa.actualizarEmpresa(14,"Los Menxs", "Act Zapatos", 2, "1", "Venta", "131.21-3"));
+//        System.out.println("Modificado:"+ empresa.actualizarEmpresa(14,"Los Menxs", "Act Zapatos", 2, "1", "Venta", "131.21-3"));
+//        System.out.println("BORRAR: "+empresa.borrarEmpresaPorID(14)); 
+        System.out.println("LISTADO EMPRESAS: "+ empresa.listarUsuarios());
+
     }
 
 }
