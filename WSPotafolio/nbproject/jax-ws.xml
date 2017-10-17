@@ -10,6 +10,9 @@
     <service name="WSGestionarProducto">
       <implementation-class>com.portafolio.service.WSGestionarProducto</implementation-class>
     </service>
+    <service name="WSGestionarEmpresa">
+      <implementation-class>com.portafolio.service.WSGestionarEmpresa</implementation-class>
+    </service>
   </services>
   <clients>
     <client name="WSGestionarUsuario">

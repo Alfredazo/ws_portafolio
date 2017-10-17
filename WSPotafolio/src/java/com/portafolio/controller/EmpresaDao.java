@@ -60,7 +60,7 @@ public class EmpresaDao {
             cs.setString(5, activo);
             cs.setString(6, rol);
             cs.setString(7, rutEmpresa);
-            
+
             cs.executeUpdate();
             if (comprobarSiExisteEmpresaID(idEmpresa)) {
                 actualizado = true;
@@ -74,15 +74,15 @@ public class EmpresaDao {
         return actualizado;
     }
 
-        public boolean borrarEmpresaPorID(int idEmpresa) {
+    public boolean borrarEmpresaPorID(int idEmpresa) {
         boolean actualizado = false;
         String sql = "CALL PKG_EMPRESA.pcd_borrar_empresa(?)";
         try {
             Connection accesoDB = conexion.getConexion();
             CallableStatement cs = accesoDB.prepareCall(sql);
-            
-            cs.setInt(1, idEmpresa);           
-            
+
+            cs.setInt(1, idEmpresa);
+
             cs.executeUpdate();
             if (comprobarSiExisteEmpresaID(idEmpresa)) {
                 actualizado = false;
@@ -95,12 +95,12 @@ public class EmpresaDao {
 
         return actualizado;
     }
-    
-         public ArrayList<Empresa> listarUsuarios() {
+
+    public ArrayList<Empresa> listarUsuarios() {
 
         ArrayList listaEmpresas = new ArrayList();
 
-        String sql = "Select * From Empresa";
+        String sql = "Select * From Empresa order by id";
         try {
             Connection accesoDB = conexion.getConexion();
             PreparedStatement ps = accesoDB.prepareStatement(sql);
@@ -113,7 +113,6 @@ public class EmpresaDao {
                 String activo = rs.getString(5);
                 String rol = rs.getString(6);
                 String rutEmpresa = rs.getString(7);
-                
 
                 Empresa empresa = new Empresa(idEmpresa, nombre, descripcion, tipoEmpresa, activo, rol, rutEmpresa);
                 listaEmpresas.add(empresa);
@@ -125,9 +124,7 @@ public class EmpresaDao {
 
         return listaEmpresas;
     }
-        
-        
-    
+
     public int retornarUltimoIdEmpresa() {
         int idEmpresa = 0;
         String sql = "select id from empresa where rownum <= 1 order by id desc";
