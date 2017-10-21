@@ -1,10 +1,15 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.portafolio.modelos;
 
-import java.sql.Date;
-
-
-public class Producto {
+/**
+ *
+ * @author jared
+ */
+public class ProductoEmpresa {
     
     private int idProducto;
     private String nombre;
@@ -12,23 +17,23 @@ public class Producto {
     private String descripcionProducto;
     private String urlFoto;
     private String activo;
-    private int idEmpresa;
-    private int tipoProductoID;
+    private String empresa;
+    private String tipoProducto;
     private String fechaIngreso;
     private String fechaCaducidad;
 
-    public Producto() {
+    public ProductoEmpresa() {
     }
 
-    public Producto(int idProducto, String nombre, int precio, String descripcionProducto, String urlFoto, String activo, int idEmpresa, int tipoProductoID, String fechaIngreso, String fechaCaducidad) {
+    public ProductoEmpresa(int idProducto, String nombre, int precio, String descripcionProducto, String urlFoto, String activo, String empresa, String tipoProducto, String fechaIngreso, String fechaCaducidad) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.precio = precio;
         this.descripcionProducto = descripcionProducto;
         this.urlFoto = urlFoto;
         this.activo = activo;
-        this.idEmpresa = idEmpresa;
-        this.tipoProductoID = tipoProductoID;
+        this.empresa = empresa;
+        this.tipoProducto = tipoProducto;
         this.fechaIngreso = fechaIngreso;
         this.fechaCaducidad = fechaCaducidad;
     }
@@ -81,20 +86,20 @@ public class Producto {
         this.activo = activo;
     }
 
-    public int getIdEmpresa() {
-        return idEmpresa;
+    public String getEmpresa() {
+        return empresa;
     }
 
-    public void setIdEmpresa(int idEmpresa) {
-        this.idEmpresa = idEmpresa;
+    public void setEmpresa(String empresa) {
+        this.empresa = empresa;
     }
 
-    public int getTipoProductoID() {
-        return tipoProductoID;
+    public String getTipoProducto() {
+        return tipoProducto;
     }
 
-    public void setTipoProductoID(int tipoProductoID) {
-        this.tipoProductoID = tipoProductoID;
+    public void setTipoProducto(String tipoProducto) {
+        this.tipoProducto = tipoProducto;
     }
 
     public String getFechaIngreso() {
@@ -115,9 +120,8 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "Producto{" + "idProducto=" + idProducto + ", nombre=" + nombre + ", precio=" + precio + ", descripcionProducto=" + descripcionProducto + ", urlFoto=" + urlFoto + ", activo=" + activo + ", idEmpresa=" + idEmpresa + ", tipoProductoID=" + tipoProductoID + ", fechaIngreso=" + fechaIngreso + ", fechaCaducidad=" + fechaCaducidad + '}';
+        return "ProductoEmpresa{" + "idProducto=" + idProducto + ", nombre=" + nombre + ", precio=" + precio + ", descripcionProducto=" + descripcionProducto + ", urlFoto=" + urlFoto + ", activo=" + activo + ", empresa=" + empresa + ", tipoProducto=" + tipoProducto + ", fechaIngreso=" + fechaIngreso + ", fechaCaducidad=" + fechaCaducidad + '}';
     }
-    
-    
+
     
 }

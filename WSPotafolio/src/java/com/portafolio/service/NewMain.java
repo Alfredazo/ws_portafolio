@@ -6,10 +6,14 @@
 package com.portafolio.service;
 
 import com.portafolio.controller.EmpresaDao;
+import com.portafolio.controller.ProductoEmpresaDao;
 import com.portafolio.controller.PersonaDao;
 import com.portafolio.controller.PersonaUsuarioDao;
+import com.portafolio.controller.ProductoDao;
+import com.portafolio.controller.TipoProductoDao;
 import com.portafolio.controller.UsuarioDao;
 import com.portafolio.modelos.Conexion;
+import com.portafolio.modelos.TipoProducto;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -24,6 +28,18 @@ public class NewMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws ParseException {
+        
+        ProductoEmpresaDao productoEmpresa = new ProductoEmpresaDao();
+        System.out.println(productoEmpresa.listarProductoEmpresa());
+       /* EmpresaDao empresa = new EmpresaDao();
+        System.out.println(empresa.listarUsuarios());
+        PersonaUsuarioDao personauser = new PersonaUsuarioDao();
+        PersonaDao persona = new PersonaDao();
+        TipoProductoDao tipo= new TipoProductoDao();
+        ProductoDao producto = new ProductoDao();
+        System.out.println(tipo.listarTipoProducto());
+        System.out.println("productos:" + producto.listarProducto());
+        System.out.println("listar personas : "+personauser.listarInformacionCompletaTodosLosUsuarios());*/
 
 //              
 //        UsuarioDao prueba = new UsuarioDao();
@@ -79,12 +95,12 @@ public class NewMain {
 //                UsuarioDao user = new UsuarioDao();
 //                System.out.println("Nivel usuario: "+user.devolverNivelUsuario("jaredaguilera@gmail.com"));
 
-        EmpresaDao empresa = new EmpresaDao();
-        System.out.println("Ultimo ID REGISTRADO:"+ empresa.retornarUltimoIdEmpresa());
+//        EmpresaDao empresa = new EmpresaDao();
+   //     System.out.println("Ultimo ID REGISTRADO:"+ empresa.retornarUltimoIdEmpresa());
 //        System.out.println("Empresa Agregada = "+ empresa.registrarEmpresa("Los Meneces", "Venta Zapatos", 2, "1", "Venta", "131.21-3"));
 //        System.out.println("Modificado:"+ empresa.actualizarEmpresa(14,"Los Menxs", "Act Zapatos", 2, "1", "Venta", "131.21-3"));
 //        System.out.println("BORRAR: "+empresa.borrarEmpresaPorID(14)); 
-        System.out.println("LISTADO EMPRESAS: "+ empresa.listarUsuarios());
+  //      System.out.println("LISTADO EMPRESAS: "+ empresa.listarUsuarios());
 
     }
 
