@@ -5,12 +5,12 @@ import java.sql.DriverManager;
 
 public class Conexion {
 
-    String usuario = "jaredaguilera";
-    String password = "hkm";
+    String usuario = "alfredo";
+    String password = "root";
 
     String host = "localhost"; // tambien puede ser una ip como "192.168.1.14"
     String puerto = "1521";
-    String sid = "xe";
+    String sid = "orcl";
 
     String driver = "oracle.jdbc.driver.OracleDriver";
 
