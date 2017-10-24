@@ -23,7 +23,7 @@ public class DescuentoDao {
         {
             boolean agregado = false;
             int idOferta = -1;
-            String sql = "CALL PKG_OFERTA.pcd_insertar_oferta(?,?,?,?,?,?,?,?,?)";
+            String sql = "CALL PKG_OFERTA.pcd_insertar_oferta(?,?,?,?,?,?,?,?,?,?)";
             try {
                 Connection accesoDB = conexion.getConexion();
                 CallableStatement cs = accesoDB.prepareCall(sql);
@@ -37,7 +37,8 @@ public class DescuentoDao {
                 cs.setString(6, condiciones);
                 cs.setString(7, fechaInicio);
                 cs.setString(8, fechaTermino);
-                cs.setInt(9, idProducto);
+                cs.setString(9,"1");
+                cs.setInt(10, idProducto);
                 int numFilas = cs.executeUpdate();
                 if (numFilas == 0) {
                     agregado = true;
@@ -141,9 +142,9 @@ public class DescuentoDao {
         return existe;
     }
         
-    public boolean actualizarDescuento(int idOferta, String nombre, String descripcion, int descuento, String imagen, String condiciones, String fechainicio, String fechatermino, int idProducto) {
+    public boolean actualizarDescuento(int idOferta, String nombre, String descripcion, int descuento, String imagen, String condiciones, String fechainicio, String fechatermino,String activo, int idProducto) {
         boolean actualizado = false;
-        String sql = "CALL PKG_OFERTA.pcd_update_oferta(?,?,?,?,?,?,?,?,?)";
+        String sql = "CALL PKG_OFERTA.pcd_update_oferta(?,?,?,?,?,?,?,?,?,?)";
         try {
             Connection accesoDB = conexion.getConexion();
             CallableStatement cs = accesoDB.prepareCall(sql);
@@ -155,7 +156,8 @@ public class DescuentoDao {
             cs.setString(6, condiciones);
             cs.setString(7, fechainicio);
             cs.setString(8, fechatermino);
-            cs.setInt(9, idProducto);
+            cs.setString(9, activo);
+            cs.setInt(10, idProducto);
 
             cs.executeUpdate();
             if (comprobarSiExisteDescuentoID(idOferta)) {

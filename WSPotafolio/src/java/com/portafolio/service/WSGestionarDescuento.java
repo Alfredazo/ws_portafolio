@@ -6,9 +6,7 @@
 package com.portafolio.service;
 
 import com.portafolio.controller.DescuentoDao;
-import com.portafolio.controller.ProductoDao;
 import com.portafolio.modelos.Descuento;
-import com.portafolio.modelos.Producto;
 import java.util.ArrayList;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
@@ -16,13 +14,12 @@ import javax.jws.WebParam;
 
 /**
  *
- * @author jared
+ * @author Alfredazo
  */
 @WebService(serviceName = "WSGestionarDescuento")
 public class WSGestionarDescuento {
 
-
-    @WebMethod(operationName = "registrarDescuento")
+      @WebMethod(operationName = "registrarDescuento")
     public boolean registrarDescuento(@WebParam(name = "nombre") String nombre, @WebParam(name = "descripcion") String descripcion, @WebParam(name = "descuento") int descuento,
             @WebParam(name = "imagen") String imagen, @WebParam(name = "condiciones") String condiciones, @WebParam(name = "fechaInicio") String fechaInicio,
             @WebParam(name = "fechaTermino") String fechaTermino, @WebParam(name = "idProducto") int idProducto) {
@@ -35,10 +32,10 @@ public class WSGestionarDescuento {
      @WebMethod(operationName = "actualizarDescuento")
     public boolean actualizarDescuento(@WebParam(name = "id") int id,@WebParam(name = "nombre") String nombre, @WebParam(name = "descripcion") String descripcion, @WebParam(name = "descuento") int descuento,
             @WebParam(name = "imagen") String imagen, @WebParam(name = "condiciones") String condiciones, @WebParam(name = "fechaInicio") String fechaInicio,
-            @WebParam(name = "fechaTermino") String fechaTermino, @WebParam(name = "idProducto") int idProducto) {
+            @WebParam(name = "fechaTermino") String fechaTermino,@WebParam(name = "activo") String activo, @WebParam(name = "idProducto") int idProducto) {
         boolean actualizado = false;
         DescuentoDao oferta = new DescuentoDao();
-        oferta.actualizarDescuento(id, nombre, descripcion, descuento, imagen, condiciones, fechaInicio, fechaTermino, idProducto);
+        oferta.actualizarDescuento(id, nombre, descripcion, descuento, imagen, condiciones, fechaInicio, fechaTermino,activo,idProducto);
         return actualizado;
     }
     
