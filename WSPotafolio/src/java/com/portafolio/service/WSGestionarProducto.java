@@ -24,7 +24,6 @@ import javax.jws.WebParam;
 @WebService(serviceName = "WSGestionarProducto")
 public class WSGestionarProducto {
 
-
     @WebMethod(operationName = "registrarProducto")
     public boolean registrarProducto(@WebParam(name = "nombre") String nombre, @WebParam(name = "precio") int precio, @WebParam(name = "descripcion") String descripcion,
             @WebParam(name = "urlFoto") String urlFoto, @WebParam(name = "activo") String activo, @WebParam(name = "idEmpresa") int idEmpresa,
@@ -34,9 +33,9 @@ public class WSGestionarProducto {
         agregado = producto.registrarProducto(nombre, precio, descripcion, urlFoto, activo, idEmpresa, tipoProductoID, fechaIngreso, fechaCaducidad);
         return agregado;
     }
-    
-     @WebMethod(operationName = "actualizarProducto")
-    public boolean actualizarProducto(@WebParam(name = "idProducto")int idProducto,@WebParam(name = "nombre") String nombre, @WebParam(name = "precio") int precio,
+
+    @WebMethod(operationName = "actualizarProducto")
+    public boolean actualizarProducto(@WebParam(name = "idProducto") int idProducto, @WebParam(name = "nombre") String nombre, @WebParam(name = "precio") int precio,
             @WebParam(name = "descripcionProducto") String descripcionProducto, @WebParam(name = "urlFoto") String urlFoto,
             @WebParam(name = "activo") String activo, @WebParam(name = "idEmpresa") int idEmpresa, @WebParam(name = "tipoProductoID") int tipoProductoID, @WebParam(name = "fechaIngreso") String fechaIngreso,
             @WebParam(name = "fechaCaducidad") String fechaCaducidad) {
@@ -45,34 +44,50 @@ public class WSGestionarProducto {
         producto.actualizarProducto(idProducto, nombre, precio, descripcionProducto, urlFoto, activo, idEmpresa, tipoProductoID, fechaIngreso, fechaCaducidad);
         return actualizado;
     }
+
+     @WebMethod(operationName = "actualizarActivoProducto")
+    public boolean actualizarActivoProducto(@WebParam(name = "idProducto") int idProducto) {
+        boolean actualizado = false;
+        ProductoDao producto = new ProductoDao();
+        producto.actualizarActivoProducto(idProducto);
+        return actualizado;
+    }
     
     @WebMethod(operationName = "borrarProductoPorID")
-    public boolean borrarProductoPorID(@WebParam(name = "idProducto")int idProducto) {
+    public boolean borrarProductoPorID(@WebParam(name = "idProducto") int idProducto) {
         boolean borrar = false;
         ProductoDao producto = new ProductoDao();
         producto.borrarProductoPorID(idProducto);
         return borrar;
     }
-    
+
     @WebMethod(operationName = "listarProducto")
     public ArrayList<Producto> listarProducto() {
-        ArrayList listarProducto = new ArrayList();        
+        ArrayList listarProducto = new ArrayList();
         ProductoDao producto = new ProductoDao();
         listarProducto = producto.listarProducto();
         return listarProducto;
     }
     
+    @WebMethod(operationName = "listarProductoPorRangoFechas")
+    public ArrayList<Producto> listarProductoPorRangoFechas(@WebParam(name = "rangoInicial") String rangoInicial,@WebParam(name = "rangoFinal") String rangoFinal) {
+        ArrayList listarProducto = new ArrayList();
+        ProductoDao producto = new ProductoDao();
+        listarProducto = producto.listarProductoPorRangosFechaCaducidad(rangoInicial, rangoFinal);
+        return listarProducto;
+    }
+
     @WebMethod(operationName = "listarTipoProducto")
     public ArrayList<TipoProducto> listarTipoProducto() {
-        ArrayList listaTipoProducto = new ArrayList();        
+        ArrayList listaTipoProducto = new ArrayList();
         TipoProductoDao tipoProducto = new TipoProductoDao();
         listaTipoProducto = tipoProducto.listarTipoProducto();
         return listaTipoProducto;
     }
-    
+
     @WebMethod(operationName = "listarProductoEmpresa")
     public ArrayList<ProductoEmpresa> listarProductoEmpresa() {
-        ArrayList listaProductoEmpresas = new ArrayList();        
+        ArrayList listaProductoEmpresas = new ArrayList();
         ProductoEmpresaDao productoEmpresa = new ProductoEmpresaDao();
         listaProductoEmpresas = productoEmpresa.listarProductoEmpresa();
         return listaProductoEmpresas;

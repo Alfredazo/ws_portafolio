@@ -18,41 +18,40 @@ public class ProductoDao {
         conexion = new Conexion();
     }
 
-    public boolean registrarProducto(String nombre, int precio, String descripcionProducto, String urlFoto, String activo, int idEmpresa, int tipoProductoID, String fechaIngreso, String fechaCaducidad) 
-        {
-            boolean agregado = false;
-            int idProducto = -1;
-            String sql = "CALL PKG_PRODUCTO.pcd_insertar_producto(?,?,?,?,?,?,?,?,?,?)";
-            try {
-                Connection accesoDB = conexion.getConexion();
-                CallableStatement cs = accesoDB.prepareCall(sql);
-                //Invoco al metodo consultar ultima persona que me devuelve el id ingresado
-                idProducto = this.retornarUltimoIdProducto() + 1;
-                cs.setInt(1, idProducto);
-                cs.setString(2, nombre);
-                cs.setInt(3, precio);
-                cs.setString(4, descripcionProducto);
-                cs.setString(5, urlFoto);
-                cs.setString(6, activo);
-                cs.setInt(7, idEmpresa);
-                cs.setInt(8, tipoProductoID);
-                cs.setString(9, fechaIngreso);
-                cs.setString(10, fechaCaducidad);
+    public boolean registrarProducto(String nombre, int precio, String descripcionProducto, String urlFoto, String activo, int idEmpresa, int tipoProductoID, String fechaIngreso, String fechaCaducidad) {
+        boolean agregado = false;
+        int idProducto = -1;
+        String sql = "CALL PKG_PRODUCTO.pcd_insertar_producto(?,?,?,?,?,?,?,?,?,?)";
+        try {
+            Connection accesoDB = conexion.getConexion();
+            CallableStatement cs = accesoDB.prepareCall(sql);
+            //Invoco al metodo consultar ultima persona que me devuelve el id ingresado
+            idProducto = this.retornarUltimoIdProducto() + 1;
+            cs.setInt(1, idProducto);
+            cs.setString(2, nombre);
+            cs.setInt(3, precio);
+            cs.setString(4, descripcionProducto);
+            cs.setString(5, urlFoto);
+            cs.setString(6, activo);
+            cs.setInt(7, idEmpresa);
+            cs.setInt(8, tipoProductoID);
+            cs.setString(9, fechaIngreso);
+            cs.setString(10, fechaCaducidad);
 
-                int numFilas = cs.executeUpdate();
+            int numFilas = cs.executeUpdate();
 
-                if (numFilas == 0) {
-                    agregado = true;
-                }            
+            if (numFilas == 0) {
+                agregado = true;
+            }
 
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println("Excep:" + e.getMessage());
         }
 
         return agregado;
     }
-    
-        public boolean borrarProductoPorID(int idProducto) {
+
+    public boolean borrarProductoPorID(int idProducto) {
         boolean actualizado = false;
         String sql = "CALL PKG_PRODUCTO.pcd_borrar_producto(?)";
         try {
@@ -106,6 +105,40 @@ public class ProductoDao {
         return listaProductos;
     }
 
+    public ArrayList<Producto> listarProductoPorRangosFechaCaducidad(String rangoInicial, String rangoFinal) {
+
+        ArrayList listaProductos = new ArrayList();
+
+        String sql  = "select * from producto where TO_DATE(fechacaducidad,'DD/MM/YYYY') ";
+               sql += "between ? and ?";
+        try {
+            Connection accesoDB = conexion.getConexion();
+            PreparedStatement ps = accesoDB.prepareStatement(sql);
+            ps.setString(1, rangoInicial);
+            ps.setString(2, rangoFinal);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int idProducto = rs.getInt(1);
+                String nombre = rs.getString(2);
+                int precio = rs.getInt(3);
+                String descripcionProducto = rs.getString(4);
+                String urlFoto = rs.getString(5);
+                String activo = rs.getString(6);
+                int idEmpresa = rs.getInt(7);
+                int tipoProductoID = rs.getInt(8);
+                String fechaIngreso = rs.getString(9);
+                String fechaCaducidad = rs.getString(10);
+
+                Producto producto = new Producto(idProducto, nombre, precio, descripcionProducto, urlFoto, activo, idEmpresa, tipoProductoID, fechaIngreso, fechaCaducidad);
+                listaProductos.add(producto);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return listaProductos;
+    }
 
     public int retornarUltimoIdProducto() {
         int idProducto = 0;
@@ -123,7 +156,7 @@ public class ProductoDao {
         }
         return idProducto;
     }
-    
+
     public boolean actualizarProducto(int idProducto, String nombre, int precio, String descripcionProducto, String urlFoto, String activo, int idEmpresa, int tipoProductoID, String fechaIngreso, String fechaCaducidad) {
         boolean actualizado = false;
         String sql = "CALL PKG_PRODUCTO.pcd_update_producto(?,?,?,?,?,?,?,?,?,?)";
@@ -153,10 +186,10 @@ public class ProductoDao {
 
         return actualizado;
     }
-    
+
     public boolean comprobarSiExisteProductoID(int idProducto) {
         boolean existe = false;
-        String sql = "select id from proucto where id = ?"; 
+        String sql = "select id from producto where id = ?";
         try {
             Connection accesoDB = conexion.getConexion();
             PreparedStatement ps = accesoDB.prepareStatement(sql);
@@ -172,6 +205,56 @@ public class ProductoDao {
             System.out.println(e.getMessage());
         }
         return existe;
+    }
+    
+    public boolean actualizarActivoProducto(int idProducto) {
+        boolean actualizado = false;        
+        String activo = "";
+        if (this.verificarActivoProducto(idProducto).equals("1")) {
+            /*Cambiar a 0*/
+            activo = "0";
+        }else{
+            /*Cambiar a 1*/
+            activo = "1";
+        }
+        
+        String sql = "CALL PKG_PRODUCTO.pcd_update_Activoproducto(?,?)";
+        try {
+            Connection accesoDB = conexion.getConexion();
+            CallableStatement cs = accesoDB.prepareCall(sql);
+            cs.setInt(1, idProducto);
+            cs.setString(2, activo);
+        
+            cs.executeUpdate();
+            if (comprobarSiExisteProductoID(idProducto)) {
+                actualizado = true;
+            } else {
+                actualizado = false;
+            }
+        } catch (SQLException e) {
+            System.out.println("Excep:" + e.getMessage());
+        }
+
+        return actualizado;
+    }
+    
+    
+    public String verificarActivoProducto(int idProducto) {
+        String activo = "";
+        String sql = "select activo from producto where id = ?";
+        try {
+            Connection accesoDB = conexion.getConexion();
+            PreparedStatement ps = accesoDB.prepareStatement(sql);
+            ps.setInt(1, idProducto);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                activo = rs.getString(1);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return activo;
     }
 
 }

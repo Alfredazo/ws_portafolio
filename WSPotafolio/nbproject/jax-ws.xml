@@ -16,6 +16,9 @@
     <service name="WSGestionarDescuento">
       <implementation-class>com.portafolio.service.WSGestionarDescuento</implementation-class>
     </service>
+    <service name="WSGestionarAnuncio">
+      <implementation-class>com.portafolio.service.WSGestionarAnuncio</implementation-class>
+    </service>
   </services>
   <clients>
     <client name="WSGestionarUsuario">
