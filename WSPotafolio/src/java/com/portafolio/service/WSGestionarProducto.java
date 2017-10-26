@@ -53,6 +53,14 @@ public class WSGestionarProducto {
         return actualizado;
     }
     
+    @WebMethod(operationName = "mostrarActivoProducto")
+    public String mostrarActivoProducto(@WebParam(name = "idProducto") int idProducto) {
+        String activoProducto = "";
+        ProductoDao producto = new ProductoDao();
+        activoProducto = producto.verificarActivoProducto(idProducto);
+        return activoProducto;
+    }
+    
     @WebMethod(operationName = "borrarProductoPorID")
     public boolean borrarProductoPorID(@WebParam(name = "idProducto") int idProducto) {
         boolean borrar = false;

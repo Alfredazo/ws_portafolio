@@ -143,7 +143,7 @@ public class AnuncioDao {
      public ArrayList<AnuncioSistema> listaRecomendacionSistema() {
 
         ArrayList listaRecomendacionSistema = new ArrayList();
-        String sql = "select id,  nombre, fechaingreso, fechacaducidad,TO_CHAR(TO_DATE(fechacaducidad,'DD/MM/YYYY') - TRUNC(SYSDATE)) ";
+        String sql = "select id,  nombre, fechaingreso, fechacaducidad,TO_CHAR(TO_DATE(fechacaducidad,'DD/MM/YYYY') - TRUNC(SYSDATE)), activo";
                sql+= " from producto ";
                sql+= " Order by fechacaducidad,TO_DATE(fechacaducidad,'DD/MM/YYYY') - TO_DATE(SYSDATE,'DD/MM/YYYY') ";
         try {
@@ -156,8 +156,9 @@ public class AnuncioDao {
                 String fechaIngreso = rs.getString(3);
                 String fechaCaducidad = rs.getString(4);
                 String tiempoPerecible  = rs.getString(5);
+                String activo = rs.getString(6);
                 
-                AnuncioSistema anuncio = new AnuncioSistema(id, nombreProducto, fechaIngreso, fechaCaducidad, tiempoPerecible);
+                AnuncioSistema anuncio = new AnuncioSistema(id, nombreProducto, fechaIngreso, fechaCaducidad, tiempoPerecible, activo);
                 listaRecomendacionSistema.add(anuncio);
             }
 

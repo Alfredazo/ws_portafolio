@@ -12,16 +12,26 @@ public class AnuncioSistema {
     private String fechaIngreso;
     private String fechaCaducidad;
     private String diasRestantesCaducidad;
+    private String activo;
 
     public AnuncioSistema() {
     }
 
-    public AnuncioSistema(int id, String nombre, String fechaIngreso, String fechaCaducidad, String diasRestantesCaducidad) {
+    public AnuncioSistema(int id, String nombre, String fechaIngreso, String fechaCaducidad, String diasRestantesCaducidad, String activo) {
         this.id = id;
         this.nombre = nombre;
         this.fechaIngreso = fechaIngreso;
         this.fechaCaducidad = fechaCaducidad;
         this.diasRestantesCaducidad = diasRestantesCaducidad;
+        this.activo =  activo;
+    }
+
+    public String getActivo() {
+        return activo;
+    }
+
+    public void setActivo(String activo) {
+        this.activo = activo;
     }
 
     public int getId() {
