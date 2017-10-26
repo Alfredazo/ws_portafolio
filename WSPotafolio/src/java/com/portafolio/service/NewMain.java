@@ -6,6 +6,7 @@
 package com.portafolio.service;
 
 import com.portafolio.controller.AnuncioDao;
+import com.portafolio.controller.DescuentoDao;
 import com.portafolio.controller.EmpresaDao;
 import com.portafolio.controller.ProductoEmpresaDao;
 import com.portafolio.controller.PersonaDao;
@@ -110,10 +111,14 @@ public class NewMain {
 //        /*Testeo Recomendacion Sistema*/
 //        System.out.println("Recomendacion sistema: "+anuncio.listaRecomendacionSistema());
 //        
-        /*Testeo Verificar Activo y update EN PRODUCTO*/
-        ProductoDao producto = new ProductoDao();
-        System.out.println("Activo: "+ producto.verificarActivoProducto(1));
-        System.out.println("Actualizar activo= "+producto.actualizarActivoProducto(1));
+//        /*Testeo Verificar Activo y update EN PRODUCTO*/
+//        ProductoDao producto = new ProductoDao();
+//        System.out.println("Activo: "+ producto.verificarActivoProducto(1));
+//        System.out.println("Actualizar activo= "+producto.actualizarActivoProducto(1));
+
+       /*Descuento*/
+       DescuentoDao descuento = new DescuentoDao();
+        System.out.println("Descuento filtrado \n"+descuento.listarPorFiltroNombreOfertaUProducto("De"));
     }
 
 }

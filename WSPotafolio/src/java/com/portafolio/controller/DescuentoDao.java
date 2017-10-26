@@ -100,6 +100,46 @@ public class DescuentoDao {
         return listaOfertaProductoEmpresa;
     }
     
+    public ArrayList<DescuentoDao> listarPorFiltroNombreOfertaUProducto(String textoFiltro) {
+
+        ArrayList listaOfertaProductoEmpresa = new ArrayList();
+
+        String sql = "select a.id, a.nombre, a.descripcion, a.descuento, a.imagen, a.condiciones, a.fechainicio, a.fechatermino, s.nombre ,d.nombre , s.precio ";
+               sql+= " from oferta a inner join producto s ";
+               sql+= " on(a.producto_id = s.id)left join empresa d on(d.id = s.idempresa) ";
+               sql+= " where a.nombre like '%'||?||'%' or s.nombre like '%'||?||'%' ";
+               sql+= " order by s.precio asc";
+        try {
+            Connection accesoDB = conexion.getConexion();
+            PreparedStatement ps = accesoDB.prepareStatement(sql);
+            ps.setString(1, textoFiltro);
+            ps.setString(2, textoFiltro);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt(1);
+                String nombre = rs.getString(2);
+                String descripcion = rs.getString(3);
+                int descuento = rs.getInt(4);
+                String imagen = rs.getString(5);
+                String condiciones = rs.getString(6);
+                String fechainicio = rs.getString(7);
+                String fechatermino = rs.getString(8);
+                String producto = rs.getString(9);
+                String empresa = rs.getString(10);
+                int precio = rs.getInt(11);
+
+                Descuento ofertaProductoEmpresa = new Descuento(id, nombre, descripcion, descuento, imagen, condiciones, fechainicio, fechatermino, producto, empresa, precio);
+                listaOfertaProductoEmpresa.add(ofertaProductoEmpresa);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return listaOfertaProductoEmpresa;
+    }
+    
+    
     public boolean borrarDescuentoPorID(int idOferta) {
         boolean borrado = false;
         String sql = "CALL PKG_OFERTA.pcd_borrar_oferta(?)";

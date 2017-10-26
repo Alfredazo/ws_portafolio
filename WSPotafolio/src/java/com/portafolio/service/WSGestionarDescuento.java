@@ -54,4 +54,12 @@ public class WSGestionarDescuento {
         listaOfertaProductoEmpresa = oferta.listarDescuentoProductoEmpresa();
         return listaOfertaProductoEmpresa;
     }
+    
+    @WebMethod(operationName = "listarPorFiltroNombreOfertaUProducto")
+    public ArrayList<Descuento> listarPorFiltroNombreOfertaUProducto(@WebParam(name = "textoFiltrado")String textoFiltrado) {
+        ArrayList listaOfertaProductoEmpresa = new ArrayList();        
+        DescuentoDao oferta = new DescuentoDao();
+        listaOfertaProductoEmpresa = oferta.listarPorFiltroNombreOfertaUProducto(textoFiltrado);
+        return listaOfertaProductoEmpresa;
+    }
 }
