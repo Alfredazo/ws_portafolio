@@ -107,7 +107,7 @@ public class DescuentoDao {
         String sql = "select a.id, a.nombre, a.descripcion, a.descuento, a.imagen, a.condiciones, a.fechainicio, a.fechatermino, s.nombre ,d.nombre , s.precio ";
                sql+= " from oferta a inner join producto s ";
                sql+= " on(a.producto_id = s.id)left join empresa d on(d.id = s.idempresa) ";
-               sql+= " where a.nombre like '%'||?||'%' or s.nombre like '%'||?||'%' ";
+               sql+= " where UPPER(a.nombre) like '%'||?||'%' or UPPER(s.nombre) like '%'||?||'%' ";
                sql+= " order by s.precio asc";
         try {
             Connection accesoDB = conexion.getConexion();
